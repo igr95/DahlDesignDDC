@@ -6,7 +6,7 @@
 //-----------BOARD MCU----------
 //------------------------------
 
-#define BOARDTYPE 0
+#define BOARDTYPE 2
 
 // 0 -> Atmel 32U4 based boards. (Leonardo, Pro Micro, Feather, Teensy 2.0, etc) SAM3X based boards. (Due)
 
@@ -31,7 +31,7 @@
 //---RP2040 ADC OVERSAMPLING----
 //------------------------------
 
-#define ENABLE_OVERSAMPLING 0
+#define ENABLE_OVERSAMPLING 1
 
 //------------------------------
 //-------DAHL DESIGN CB1--------
