@@ -47,8 +47,8 @@
   pushButton(1, 12);
 
   // rotaries
-  funkyRotary(1, 13, 14, false);
-  funkyRotary(1, 15, 16, false);
+  E18Inc(1, 13, false);
+  E18Inc(1, 15, false);
 
   // clutch (channel 3: ADC3 -A2-)
   singleClutch(3, 17000, 29000);
