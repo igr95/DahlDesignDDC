@@ -44,13 +44,11 @@
   E18Inc(2, 5, false);
 
   // grayhill
-  // rotaryAnalog2Mode(1, 1, 512, 3424, 6400, 9312, 12256, 15168, 18112, 21024, 23968, 26912, 29824, 32736, false);
-  // setAnalogSwitchMode(1, 1, 1); // change rotary to incremental mode
+  rotaryAnalog2Mode(1, 1, 3000, 5300, 7600, 9900, 12100, 14300, 16500, 18800, 21060, 23450, 25900, 28500, false);
+  setAnalogSwitchMode(1, 1, 1); // change rotary to incremental mode
 
   // clutches
-  dualClutch(2, 10300, 7200, 3, 10200, 6700, true);
-
-  // checkValue(1);
+  dualClutch(3, 10300, 7200, 2, 10200, 6700, true);
 
   // top left and top right green buttons, 8 seconds
   // firmwareUploadMode(1, 3, 1, 9, 8000);
