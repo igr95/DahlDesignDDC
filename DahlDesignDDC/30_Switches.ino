@@ -5,8 +5,8 @@
   // TABLE INJECT
 
   // paddles (down - up)
-  switchTableInject(14, 1, 1); // 0
-  switchTableInject(15, 1, 2); // 1
+  switchTableInject(6, 1, 1); // 0
+  switchTableInject(7, 1, 2); // 1
 
   // buttons (top-bottom)
   switchTableInject(0, 1, 3); // 2
@@ -23,8 +23,8 @@
   switchTableInject(17, 1, 12); // 11
 
   // rotaries (left - right)
-  switchTableInject(6, 1, 13);
-  switchTableInject(7, 1, 14);
+  switchTableInject(14, 1, 13);
+  switchTableInject(15, 1, 14);
   switchTableInject(8, 1, 15);
   switchTableInject(9, 1, 16);
   switchTableInject(10, 1, 17);

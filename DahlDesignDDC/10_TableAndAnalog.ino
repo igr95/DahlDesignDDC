@@ -25,9 +25,9 @@ uint8_t buttonNumber[rowCount][colCount] =
 
 
 uint8_t directPins[] = { 
-  6, 7, 8, 9, // rotaries
-  10, 11, 12, 13, // rotaries
-  14, 15, //paddles
+  8, 9, 10, 11, // rotaries
+  12, 13, 14, 15, // rotaries
+  6, 7, //paddles
   0, 1, 2, 3, 4, // buttons
   21, 20, 19, 18, 17, // buttons
 };
