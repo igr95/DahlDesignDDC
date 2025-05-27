@@ -51,7 +51,7 @@
   E18Inc(1, 15, false);
 
   // 2 clutch (channel 3: ADC2, channel 2: ADC1)
-  dualClutch(3, 10100, 7300, 2, 10400, 7900, false);
+  dualClutch(3, 10200, 8000, 2, 10100, 7900, false);
 
   // top left and top right white buttons, 8 seconds
   // firmwareUploadMode(1, 3, 1, 7, 8000);
