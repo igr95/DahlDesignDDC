@@ -58,7 +58,7 @@
   E18Inc(1, 19, false);
 
   // clutch (channel 3: ADC2, channel 2: ADC1)
-  dualClutch(2, 9200, 6200, 3, 10000, 7100, false);
+  dualClutch(2, 9500, 6550, 3, 10800, 9700, false);
   // checkValue(2);
   // checkValue(3);
 
