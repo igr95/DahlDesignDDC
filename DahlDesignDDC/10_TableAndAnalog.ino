@@ -54,11 +54,9 @@ uint8_t analogPins[analogChannelCount] =                 //Pin number for your a
 { ADC1, ADC2, ADC3 };
 
 uint8_t analogButtonNumber[analogChannelCount] =         //Button number for your analog channels
-{ 0, 0, 0 };
+{ 38, 0, 0 };
 
 uint8_t analogButtonNumberIncMode[analogChannelCount] =  //Button number for alternate modes
 { 36, 0, 0 };
-
-
 
 #endif
