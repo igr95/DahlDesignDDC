@@ -146,6 +146,15 @@ void SimHubImport()
 }
 #endif
 
+void setBrightness(uint8_t brightness)
+{
+  LEDBrightness = brightness;
+  if (LEDBrightness > 100)
+  {
+    LEDBrightness = 100;
+  }
+}
+
 #endif
 
 
@@ -155,7 +164,7 @@ void SimHubImport()
 
 #if(LED1COUNT > 0)
 
-void triggerLED(uint8_t startLED, uint8_t stopLED, bool condition, uint32_t color, uint8_t brightness, bool clearLEDs = true, bool blinkEnable = false, int blinkOnTimer = 500, int blinkOffTimer = 500)
+void triggerLED(uint8_t startLED, uint8_t stopLED, bool condition, uint32_t color, uint8_t brightness = 100, bool clearLEDs = true, bool blinkEnable = false, int blinkOnTimer = 500, int blinkOffTimer = 500)
 {
   int R = (color & 0xFF0000) >> 16;
   R = R * brightness / 100;
@@ -231,7 +240,7 @@ void triggerLED(uint8_t startLED, uint8_t stopLED, bool condition, uint32_t colo
 
 }
 
-void colorLED (uint8_t startLED, uint8_t stopLED, uint32_t color, uint8_t brightness)
+void colorLED (uint8_t startLED, uint8_t stopLED, uint32_t color, uint8_t brightness = 100)
 {
   int R = (color & 0xFF0000) >> 16;
   R = R * brightness / 100;
@@ -588,7 +597,7 @@ void rotaryLED(uint8_t analogChannel, uint8_t startLED, uint8_t positions, uint3
 
 #if(LED2COUNT > 0)
 
-void triggerLED2 (uint8_t startLED, uint8_t stopLED, bool condition, uint32_t color, uint8_t brightness, bool clearLEDs = true, bool blinkEnable = false, int blinkOnTimer = 500, int blinkOffTimer = 500)
+void triggerLED2 (uint8_t startLED, uint8_t stopLED, bool condition, uint32_t color, uint8_t brightness = 100, bool clearLEDs = true, bool blinkEnable = false, int blinkOnTimer = 500, int blinkOffTimer = 500)
 {
   int R = (color & 0xFF0000) >> 16;
   R = R * brightness / 100;
@@ -664,7 +673,7 @@ void triggerLED2 (uint8_t startLED, uint8_t stopLED, bool condition, uint32_t co
 
 }
 
-void colorLED2 (uint8_t startLED, uint8_t stopLED, uint32_t color, uint8_t brightness)
+void colorLED2 (uint8_t startLED, uint8_t stopLED, uint32_t color, uint8_t brightness = 100)
 {
   int R = (color & 0xFF0000) >> 16;
   R = R * brightness / 100;
@@ -1020,7 +1029,7 @@ void rotaryLED2 (uint8_t analogChannel, uint8_t startLED, uint8_t positions, uin
 
 #if(LED3COUNT > 0)
 
-void triggerLED3 (uint8_t startLED, uint8_t stopLED, bool condition, uint32_t color, uint8_t brightness, bool clearLEDs = true, bool blinkEnable = false, int blinkOnTimer = 500, int blinkOffTimer = 500)
+void triggerLED3 (uint8_t startLED, uint8_t stopLED, bool condition, uint32_t color, uint8_t brightness = 100, bool clearLEDs = true, bool blinkEnable = false, int blinkOnTimer = 500, int blinkOffTimer = 500)
 {
   int R = (color & 0xFF0000) >> 16;
   R = R * brightness / 100;
@@ -1096,7 +1105,7 @@ void triggerLED3 (uint8_t startLED, uint8_t stopLED, bool condition, uint32_t co
 
 }
 
-void colorLED3 (uint8_t startLED, uint8_t stopLED, uint32_t color, uint8_t brightness)
+void colorLED3 (uint8_t startLED, uint8_t stopLED, uint32_t color, uint8_t brightness = 100)
 {
   int R = (color & 0xFF0000) >> 16;
   R = R * brightness / 100;
@@ -1452,7 +1461,7 @@ void rotaryLED3 (uint8_t analogChannel, uint8_t startLED, uint8_t positions, uin
 
 #if(LED4COUNT > 0)
 
-void triggerLED4 (uint8_t startLED, uint8_t stopLED, bool condition, uint32_t color, uint8_t brightness, bool clearLEDs = true, bool blinkEnable = false, int blinkOnTimer = 500, int blinkOffTimer = 500)
+void triggerLED4 (uint8_t startLED, uint8_t stopLED, bool condition, uint32_t color, uint8_t brightness = 100, bool clearLEDs = true, bool blinkEnable = false, int blinkOnTimer = 500, int blinkOffTimer = 500)
 {
   int R = (color & 0xFF0000) >> 16;
   R = R * brightness / 100;
@@ -1528,7 +1537,7 @@ void triggerLED4 (uint8_t startLED, uint8_t stopLED, bool condition, uint32_t co
 
 }
 
-void colorLED4 (uint8_t startLED, uint8_t stopLED, uint32_t color, uint8_t brightness)
+void colorLED4 (uint8_t startLED, uint8_t stopLED, uint32_t color, uint8_t brightness = 100)
 {
   int R = (color & 0xFF0000) >> 16;
   R = R * brightness / 100;

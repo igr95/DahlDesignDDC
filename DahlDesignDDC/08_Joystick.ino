@@ -9,11 +9,11 @@ Joystick_ Joystick(JOYSTICK_DEFAULT_REPORT_ID, JOYSTICK_TYPE_JOYSTICK,
     BUTTONCOUNT,   //Button count
     HATCOUNT,      //Hat switch count
     true,          //X axis, used for clutch
-    false,         //Y axis, used for button mode field
-    false,         //Z axis, used for encoder mode field
-    false,         //Rx axis 
-    false,         //Ry axis, used for bite point posting
-    false,         //Rz axis 
+    true,          //Y axis, used for B field
+    true,          //Z axis, used for R field
+    true,          //Rx axis, used for version field
+    true,          //Ry axis, used for clutch bite point
+    false,         //Rz axis
     false,         //Rudder
     false,         //Throttle, used for dual clutch mode 4
     false,         //Accelerator
