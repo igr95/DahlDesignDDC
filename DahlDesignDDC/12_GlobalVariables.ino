@@ -40,6 +40,8 @@ int8_t biteButtonRow;
 int8_t biteButtonCol;
 int8_t presetButtonRow;
 int8_t presetButtonCol;
+int8_t mouseRow;
+int8_t mouseCol;
 
 //Clutch calibration
 int16_t slaveReleasedLow = 0;
@@ -76,6 +78,8 @@ uint8_t second = 0;
 uint8_t switchPreset = 0;
 bool bootPreset = true;
 
+//
+
 //Clock and counter
 unsigned long globalClock;
 
@@ -97,6 +101,11 @@ unsigned long globalClock;
 #define togglePulse 50
 #define funkyPulse 60
 #define funkyCooldown 70
+#define rotarySwitchZeroBounce 30
+#define rotarySwitchCooldown 20
+#define rotarySwitchUnexpected 30
+#define rotarySwitchCounterLock 150
+
 
 //Clutch deadzones
 #define clutchTopDeadzone 10
@@ -104,3 +113,5 @@ unsigned long globalClock;
 
 //LED setup
 int8_t LEDBrightness = 25;
+
+
