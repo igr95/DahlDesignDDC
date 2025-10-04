@@ -1,5 +1,5 @@
 /*
- * Chose your board. Default is to 32U4-based boards. 
+ * Chose your board. Defaults to 32U4-based boards.
  */
 
 //------------------------------
@@ -33,6 +33,13 @@
 //------------------------------
 
 #define ENABLE_OVERSAMPLING 1
+
+//------------------------------
+//-----------MOUSE--------------
+//------------------------------
+
+#define ENABLE_MOUSE 0
+#define MOUSE_ALWAYS_ACTIVE 0
 
 //------------------------------
 //-------DAHL DESIGN BOARDS-----
@@ -75,8 +82,8 @@
 
 //ROW8 setup
 #define DISABLE_ALERT_PINS 0  //Gives access to COL2 and COL3. Disables ALERT pins for the ADCs, making them heavier to run.
-#define DISABLE_ANALOG 0      //Gives access to COL4 - COL 7 by using (and disabling analog function of) ADC9 - ADC12 pins. 
-#define DISABLE_LED_PIN 0     //Gives access to COL8, use the dedicated 8-8 pin. The LED pin will no longer work. 
+#define DISABLE_ANALOG 0      //Gives access to COL4 - COL 7 by using (and disabling analog function of) ADC9 - ADC12 pins.
+#define DISABLE_LED_PIN 0     //Gives access to COL8, use the dedicated 8-8 pin. The LED pin will no longer work.
 
 //------------------------------
 //---------PWM CONTROL----------
@@ -89,6 +96,15 @@
 #elif (PWMENABLED == 1)
   int8_t PWMChannelPins [] = {99};
 #endif
+
+//------------------------------
+//----------LOAD CELL-----------
+//------------------------------
+
+#define LOADCELL_ENABLED 0
+#define LOADCELL_DATA_PIN 0
+#define LOADCELL_CLOCK_PIN 1
+#define LOADCELL_OVERSAMPLING 5
 
 //------------------------------
 //---------I2C DEVICES----------
@@ -143,6 +159,7 @@ uint8_t ADS1115_alertPins [] = {99};
 bool wire1Init = false;
 bool wire0Init = false;
 
+
 #if(USING_CB1 == 1 || ENABLE_OVERSAMPLING == 1)
   #include <ADCInput.h>
   ADCInput oversamples (A0, A1, A2, A3);
@@ -150,16 +167,18 @@ bool wire0Init = false;
 
 #if(USING_CB1 == 1)
   bool ADS1115sentReq[2] = {false, false};
-  long ADS1115value[12] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+  long ADS1115value[12 + LOADCELL_ENABLED];
   uint8_t ADS1115channelCounter[2] = {0,0};  
 #elif(ADS1115_CHIPS > 0 && ENABLE_OVERSAMPLING == 1)
   bool ADS1115sentReq[ADS1115_CHIPS];
-  uint16_t ADS1115value[4*(ADS1115_CHIPS+1)];
+  uint16_t ADS1115value[4*(ADS1115_CHIPS+1) + LOADCELL_ENABLED];
   uint8_t ADS1115channelCounter[ADS1115_CHIPS];
 #elif(ADS1115_CHIPS > 0)
   bool ADS1115sentReq[ADS1115_CHIPS];
-  uint16_t ADS1115value[4*ADS1115_CHIPS];
+  uint16_t ADS1115value[4*ADS1115_CHIPS + LOADCELL_ENABLED];
   uint8_t ADS1115channelCounter[ADS1115_CHIPS];
+#elif(LOADCELL_ENABLED == 1)
+  uint16_t ADS1115value[LOADCELL_ENABLED];
 #endif
 
 //ADC defines
@@ -193,8 +212,16 @@ bool wire0Init = false;
 //DDC VERSION
 
 #define MAJORVERSION 2
-#define MINORVERSION 12
+#define MINORVERSION 13
 #define PATCHVERSION 0
+
+//Load cell
+#if (LOADCELL_ENABLED == 1)
+  int32_t loadcellTotal = 0;
+  int32_t loadcellReadings[LOADCELL_OVERSAMPLING] = {0};
+  int32_t loadcellAverage = 0;
+  uint8_t loadcellReadIndex = 0;
+#endif
 
 //------------------------------
 //---------LIBRARIES------------
@@ -202,14 +229,28 @@ bool wire0Init = false;
 
 #if (BOARDTYPE == 0)
   #include <DDC32U4.h>
+  #if (ENABLE_MOUSE == 1)
+  #include <DDCANJOMOUSE.h>
+  JoyMouse_ Mouse;
+  uint8_t oldMouseSegment = 0;
+  bool mouseRun = false;
+  bool mouseRan = false;
+  #endif
 #elif (BOARDTYPE == 1)
   #include <DDCSAMD.h>
 #elif (BOARDTYPE == 2)
   #include <DDCPI.h>
-  extern "C" 
+  extern "C"
   {
   #include "pico/bootrom.h"
   }
+  #if (ENABLE_MOUSE == 1)
+  #include <DDCANJOMOUSE2040.h>
+  JoyMouseRP2040_ Mouse;
+  uint8_t oldMouseSegment = 0;
+  bool mouseRun = false;
+  bool mouseRan = false;
+  #endif
   long bootTimer = 0;
 #endif
 
