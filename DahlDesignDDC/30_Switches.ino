@@ -48,7 +48,7 @@
   setAnalogSwitchMode(1, 1, 1); // change rotary to incremental mode
 
   // clutches
-  dualClutch(3, 10300, 7200, 2, 10200, 6700, true);
+  dualClutch(3, 9800, 6700, 2, 10000, 7000, true);
 
   // top left and top right green buttons, 8 seconds
   // firmwareUploadMode(1, 3, 1, 9, 8000);
