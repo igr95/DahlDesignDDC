@@ -4,29 +4,37 @@
 
   // TABLE INJECT
 
-  // 2 paddles (down - up)
-  switchTableInject(22, 1, 1); // 0
+  // paddles (down - up)
+  switchTableInject(0, 1, 1); // 0
   switchTableInject(18, 1, 2); // 1
 
-  // 4 buttons left (top-bottom)
-  switchTableInject(6, 1, 3); // 2
-  switchTableInject(7, 1, 4); // 3
-  switchTableInject(8, 1, 5); // 4
-  switchTableInject(9, 1, 6); // 5
+  // buttons (top-bottom)
+  switchTableInject(1, 1, 4); // 2
+  switchTableInject(2, 1, 3); // 3
+  switchTableInject(3, 1, 5); // 4
+  switchTableInject(4, 1, 6); // 5
+  switchTableInject(5, 1, 7); // 6
 
-  // 4 buttons right (top-bottom)
-  switchTableInject(10, 1, 7);  // 6
-  switchTableInject(11, 1, 8);  // 7
-  switchTableInject(12, 1, 9);  // 8
-  switchTableInject(13, 1, 10); // 9 
-  
-  // 3 rotaries (left - right)
-  switchTableInject(0, 1, 11); // 10
-  switchTableInject(1, 1, 12); // 11
-  switchTableInject(2, 1, 13); // 12
-  switchTableInject(3, 1, 14); // 13
-  switchTableInject(4, 1, 15); // 14
-  switchTableInject(5, 1, 16); // 15
+  // buttons right (top-bottom)
+  switchTableInject(15, 1, 10);  // 7
+  switchTableInject(22, 1, 11);  // 8
+  switchTableInject(21, 1, 9); // 9 
+  switchTableInject(20, 1, 8); // 10
+  switchTableInject(19, 1, 12); // 11
+
+  // rotaries (left - right)
+  switchTableInject(6, 1, 13);
+  switchTableInject(7, 1, 14);
+  switchTableInject(8, 1, 15);
+  switchTableInject(9, 1, 16);
+  switchTableInject(10, 1, 17);
+  switchTableInject(11, 1, 18);
+  switchTableInject(12, 1, 19);
+  switchTableInject(13, 1, 20);
+
+  // xtra left-right
+  switchTableInject(17, 1, 21); // 2
+  switchTableInject(14, 1, 22); // 2
 
   // ASSIGNMENT
 
@@ -41,20 +49,36 @@
   pushButton(1, 6);
   // 4 buttons right
   pushButton(1, 7);
+
+  // buttons right
   pushButton(1, 8);
   pushButton(1, 9);
   pushButton(1, 10);
+  pushButton(1, 11);
+  pushButton(1, 12);
 
-  // 3 rotaries
-  E18Inc(1, 11, false);
+  // rotaries
   E18Inc(1, 13, false);
   E18Inc(1, 15, false);
+  E18Inc(1, 17, false);
+  // E18Inc(1, 19, false);
 
-  // 2 clutch (channel 3: ADC2, channel 2: ADC1)
-  dualClutch(3, 10200, 8000, 2, 10100, 7900, false);
+  // xtra left-right
+  pushButton(1, 21);
+  pushButton(1, 22);
 
-  // top left and top right white buttons, 8 seconds
-  // firmwareUploadMode(1, 3, 1, 7, 8000);
+  // clutch (channel 3: ADC2, channel 2: ADC1)
+  dualClutch(2, 9900, 7800, 3, 9600, 7200, false);
+  // checkValue(2);
+  // dualClutchCal(2, 3, false); 
+  // clutchCalibrate(1, 3); // top left button to enable calib
+
+  // rotaryAnalog2Mode(1, 1, 0, 2800, 5300, 8000, 10700, 13300, 16000, 19000, 22300, 25500, 23450, 29000, false);
+  // setAnalogSwitchMode(1, 1, 1); // change rotary to incremental mode
+
+
+  // top left and top right buttons, 8 seconds
+  // firmwareUploadMode(1, 3, 1, 8, 8000);
 
   //--------------------------------------
   //---------SWITCHES END HERE------------
