@@ -68,7 +68,7 @@
   pushButton(1, 22);
 
   // clutch (channel 3: ADC2, channel 2: ADC1)
-  dualClutch(2, 9900, 7800, 3, 9600, 7200, false);
+  dualClutch(2, 10500, 8800, 3, 14600, 16400, false);
   // checkValue(2);
   // dualClutchCal(2, 3, false); 
   // clutchCalibrate(1, 3); // top left button to enable calib
