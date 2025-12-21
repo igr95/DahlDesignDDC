@@ -23,10 +23,10 @@
   pushButton(6, 6);
 
   // buttons MOM OFF MOM (4)
-  pushButton(3, 3);
-  pushButton(3, 4);
-  pushButton(3, 5);
-  pushButton(3, 6);
+  toggleP(3, 3);
+  toggleP(3, 4);
+  toggleP(3, 5);
+  toggleP(3, 6);
 
   // rotaries (9)
 
@@ -44,11 +44,12 @@
   E18Inc(2, 5, false);
 
   // grayhill
-  rotaryAnalog2Mode(1, 1, 3000, 5300, 7600, 9900, 12100, 14300, 16500, 18800, 21060, 23450, 25900, 28500, false);
-  setAnalogSwitchMode(1, 1, 1); // change rotary to incremental mode
+  // rotaryAnalog2Mode(1, 1, 780, 870, 930, 1010, 1095, 1195, 1320, 1510, 1790, 2230, 3100, 5460, false);
+  // setAnalogSwitchMode(1, 1, 1); // change rotary to incremental mode
 
   // clutches
-  dualClutch(3, 9800, 6700, 2, 10000, 7000, true);
+  dualClutch(2, 10000, 7400, 3, 10500, 8500, true);
+  // checkValue(1);
 
   // top left and top right green buttons, 8 seconds
   // firmwareUploadMode(1, 3, 1, 9, 8000);
