@@ -8,18 +8,19 @@
   switchTableInject(9, 1, 1); // 0
   switchTableInject(6, 1, 2); // 1
 
-  // buttons (top-bottom)
-  switchTableInject(5, 1, 3); // 2
-  switchTableInject(4, 1, 4); // 3
-  switchTableInject(3, 1, 5); // 4
-  switchTableInject(2, 1, 6); // 5
-  switchTableInject(1, 1, 7); // 6
   // buttons right (top-bottom)
-  switchTableInject(15, 1, 8); // 7
-  switchTableInject(14, 1, 9); // 8
-  switchTableInject(13, 1, 10); // 9 
-  switchTableInject(12, 1, 11); // 10
-  switchTableInject(11, 1, 12); // 11
+  switchTableInject(11, 1, 3);
+  switchTableInject(12, 1, 4);
+  switchTableInject(13, 1, 5);
+  switchTableInject(15, 1, 6);
+  switchTableInject(14, 1, 7);
+
+  // buttons left (top-bottom)
+  switchTableInject(4, 1, 8);
+  switchTableInject(3, 1, 9);
+  switchTableInject(2, 1, 10);
+  switchTableInject(1, 1, 11);
+  switchTableInject(0, 1, 12);
 
   // rotaries (left - right)
   switchTableInject(20, 1, 13);
@@ -51,7 +52,7 @@
   E18Inc(1, 15, false);
 
   // clutches
-  dualClutch(3, 9900, 7100, 2, 10000, 7500, false);
+  dualClutch(3, 10800, 8800, 2, 10000, 7800, false);
 
   // top left and top right white buttons, 8 seconds
   firmwareUploadMode(1, 3, 1, 8, 8000);
