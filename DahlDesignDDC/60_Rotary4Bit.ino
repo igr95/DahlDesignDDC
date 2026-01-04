@@ -11,7 +11,7 @@ void rotary4Modes(int row, int column, int fieldPlacement, int hybridPositions, 
     int HyPos = hybridPositions;
     int Reverse = reverse;
 
-    int maxPos = max(16, HyPos);
+    int maxPos = max(12, HyPos);
 
     //Find switch absolute position
 
@@ -37,6 +37,219 @@ void rotary4Modes(int row, int column, int fieldPlacement, int hybridPositions, 
     pos = pos ^ (pos >> 1);
 
     int result = pos;
+        
+    if (result > 9)
+    {
+        result -= 4;
+    }
+
+    //Short debouncer on switch rotation
+
+    if (pushState[Row][Column] != result)
+    {
+        if (globalClock - switchTimer[Row][Column] > encoderPulse)
+        {
+            switchTimer[Row][Column] = globalClock;
+        }
+        else if (globalClock - switchTimer[Row][Column] > encoderWait)
+        {
+            //----------------------------------------------
+            //----------------MODE CHANGE-------------------
+            //----------------------------------------------
+
+            //Due to placement of this scope, mode change will only occur on switch rotation.
+            //If you want to avoid switching mode, set fieldPlacement to 0.
+
+            if (pushState[modButtonRow - 1][modButtonCol - 1] == 1 && FieldPlacement != 0)
+            {
+                for (int i = 0; i < maxPos + 1; i++) //Remove the remnants from SWITCH MODE 1
+                {
+                    Joystick.releaseButton(i - 1 + Number);
+                }
+
+                if (switchMode[Row][Column] && switchMode[Row][Column + 1]) //EXIT from switch mode 4
+                {
+                    switchMode[Row][Column + 1] = false;
+                    switchMode[Row][Column] = false;
+                }
+                else //Rotate between switch modes 1-3
+                {
+                    switchMode[Row][Column] = !switchMode[Row][Column];
+                    if (!switchMode[Row][Column]) //Moving into hybrid mode, set hybrid button to 0
+                    {
+                        switchMode[Row][Column + 1] = true;
+                        latchState[hybridButtonRow - 1][hybridButtonCol - 1] = 0;
+                    }
+                    else
+                    {
+                        if (switchMode[Row][Column + 1])
+                        {
+                            switchMode[Row][Column + 1] = false;
+                            switchMode[Row][Column] = false;
+                        }
+                    }
+                }
+            }
+
+            //Engage encoder pulse timer
+            switchTimer[Row][Column + 1] = globalClock;
+
+            //Update difference, storing the value in pushState on pin 2
+            pushState[Row][Column + 1] = result - pushState[Row][Column];
+
+            //Give new value to pushState
+            pushState[Row][Column] = result;
+
+            //If we're in open hybrid, change counter
+            if (!switchMode[Row][Column] && switchMode[Row][Column + 1])
+            {
+                if ((pushState[Row][Column + 1] > 0 && pushState[Row][Column + 1] < 6) || pushState[Row][Column + 1] < -6)
+                {
+                    pushState[Row][Column + 2] = pushState[Row][Column + 2] + 1 - (2 * Reverse);
+                }
+                else
+                {
+                    pushState[Row][Column + 2] = pushState[Row][Column + 2] - 1 + (2 * Reverse);
+                }
+                if (pushState[Row][Column + 2] < 0)
+                {
+                    pushState[Row][Column + 2] = HyPos - 1;
+                }
+            }
+
+            //If we're not in hybrid at all, reset counter
+            else if (!switchMode[Row][Column + 1])
+            {
+                pushState[Row][Column + 2] = 0;
+            }
+        }
+    }
+
+    //If we're in hybrid, able to set open/closed hybrid
+    if (switchMode[Row][Column + 1])
+    {
+        switchMode[Row][Column] = latchState[hybridButtonRow - 1][hybridButtonCol - 1];
+    }
+
+    //SWITCH MODE 1: 16 - position switch
+
+    if (!switchMode[Row][Column] && !switchMode[Row][Column + 1])
+    {
+        pushState[Row][Column + 1] = 0; //Refreshing encoder mode difference
+
+        for (int i = 0; i < 17; i++)
+        {
+            if (i == pushState[Row][Column])
+            {
+                Joystick.pressButton(i + Number);
+            }
+            else
+            {
+                Joystick.releaseButton(i + Number);
+            }
+        }
+    }
+
+    //SWITCH MODE 2/4: Incremental encoder or closed hybrid
+
+    else if (switchMode[Row][Column])
+    {
+        Number = buttonNumber[Row][Column + 1];
+        int difference = pushState[Row][Column + 1];
+        if (difference != 0)
+        {
+            if (globalClock - switchTimer[Row][Column + 1] < encoderPulse)
+            {
+                if ((difference > 0 && difference < 6) || difference < -6)
+                {
+                    Joystick.setButton(Number + Reverse, 1);
+                    Joystick.setButton(Number + 1 - Reverse, 0);
+                }
+                else
+                {
+                    Joystick.setButton(Number + Reverse, 0);
+                    Joystick.setButton(Number + 1 - Reverse, 1);
+                }
+            }
+            else
+            {
+                pushState[Row][Column + 1] = 0;
+                Joystick.setButton(Number, 0);
+                Joystick.setButton(Number + 1, 0);
+            }
+        }
+    }
+
+    //SWITCH MODE 3: OPEN HYBRID
+    if (!switchMode[Row][Column] && switchMode[Row][Column + 1])
+    {
+
+        for (int i = 0; i < HyPos + 1; i++)
+        {
+            int e = pushState[Row][Column + 2] % HyPos;
+            if (e == 0)
+            {
+                e = HyPos;
+            }
+            if (i == e)
+            {
+                Joystick.pressButton(i - 1 + Number);
+            }
+            else
+            {
+                Joystick.releaseButton(i - 1 + Number);
+            }
+        }
+    }
+
+    //Push switch mode
+    long push = 0;
+    push = push | switchMode[Row][Column];
+    push = push | (switchMode[Row][Column + 1] << 1);
+    push = push << (FieldPlacement - 1);
+    rotaryField = rotaryField | push;
+}
+
+void rotary4ModesReverse(int row, int column, int fieldPlacement, int hybridPositions, bool reverse)
+{
+    int Row = row - 1;
+    int Column = column - 1;
+    int Number = buttonNumber[Row][Column];
+    int FieldPlacement = fieldPlacement;
+    int HyPos = hybridPositions;
+    int Reverse = reverse;
+
+    int maxPos = max(12, HyPos);
+
+    //Find switch absolute position
+
+    bool Pin4 = rawState[Row][Column];
+    bool Pin3 = rawState[Row][Column + 1];
+    bool Pin2 = rawState[Row][Column + 2];
+    bool Pin1 = rawState[Row][Column + 3];
+
+    bool array[4] = { Pin1, Pin2, Pin3, Pin4 };
+
+    int pos = 0;
+
+    for (int i = 0; i < 4; i++)
+    {
+        if (array[i])
+        {
+            pos |= (1 << i);
+        }
+    }
+
+    //pos = pos ^ (pos >> 4);
+    pos = pos ^ (pos >> 2);
+    pos = pos ^ (pos >> 1);
+
+    int result = pos;
+        
+    if (result > 9)
+    {
+        result -= 4;
+    }
 
     //Short debouncer on switch rotation
 

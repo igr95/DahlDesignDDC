@@ -110,15 +110,15 @@
 //---------I2C DEVICES----------
 //------------------------------
 
-#define SDA0PIN 0
-#define SCL0PIN 1
+#define SDA0PIN 20
+#define SCL0PIN 21
 #define SDA1PIN 2
 #define SCL1PIN 3
 
 //PORT EXPANDER PCA9555
-#define USING_PCA9555 0
+#define USING_PCA9555 1
 #define PCA9555_I2C_NUMBER 0
-uint8_t PCA9555interruptPins [] = {99};
+uint8_t PCA9555interruptPins [] = {22};
 #define PCA9555_OUTPUT 0
 
 #if (PCA9555_OUTPUT== 1)

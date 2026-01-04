@@ -4,10 +4,10 @@
 //------------TABLE VARIABLES-------------
 //-----------------------------------------
 
-uint8_t row[] = { 99 };
+uint8_t row[] = { 15, 0, 9, 8, 7, 6, 99, 99, 99 };
 const uint8_t rowCount = sizeof(row) / sizeof(row[0]);
 
-uint8_t col[] = { 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99 };
+uint8_t col[] = { 19, 18, 17, 5, 4, 99 ,99 ,99 };
 const uint8_t colCount = sizeof(col) / sizeof(col[0]);
 
 //---------------------------------------
@@ -16,7 +16,15 @@ const uint8_t colCount = sizeof(col) / sizeof(col[0]);
 
 uint8_t buttonNumber[rowCount][colCount] =
 {
-  { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21 },
+  { 2, 3, 4, 12, 13,0,0 }, // ROW 1
+  { 7, 8, 9, 14, 15,0,0 }, // ROW 2
+  { 16, 0, 0, 0, 5, 0,0 }, // ROW 4
+  { 28, 0, 0, 0, 6, 0,0 }, // ROW 5
+  { 40, 0, 0, 0, 10,0,0 }, // ROW 5
+  { 52, 0, 0, 0, 11,0,0 }, // ROW 6
+  { 0, 1, 0, 0, 0,0, 0,0    },  // DIRECT PINS
+  { 28, 0, 0, 0, 40,0, 0,0    },  // PORT EXPANDER
+  { 0, 1, 0, 0, 52,0, 0,0    },  // PORT EXPANDER
 };
 
 //---------------------------------------
@@ -24,18 +32,7 @@ uint8_t buttonNumber[rowCount][colCount] =
 //---------------------------------------
 
 
-uint8_t directPins[] = { 
-  0, // Xtra Left
-  1, 2, 3, 4, 5, // buttons left
-  6, 7, // ROT1
-  8, 9, // ROT2
-  10, 11, // ROT3
-  12, 13, // ROT4
-  14, // Xtra Right
-  15, 22, 21, 20, 19, // buttons right
-  17, // shifter left
-  18, // shifter right
-};
+uint8_t directPins[] = { 3, 14 };
 const uint8_t directPinsCount = sizeof(directPins) / sizeof(directPins[0]);
 
 
@@ -58,10 +55,10 @@ uint8_t analogPins[analogChannelCount] =                 //Pin number for your a
 { ADC1, ADC2, ADC3 };
 
 uint8_t analogButtonNumber[analogChannelCount] =         //Button number for your analog channels
-{ 24, 0, 0 };
+{ 0, 0, 0 };
 
 uint8_t analogButtonNumberIncMode[analogChannelCount] =  //Button number for alternate modes
-{ 22, 0, 0 };
+{ 0, 0, 0 };
 
 
 

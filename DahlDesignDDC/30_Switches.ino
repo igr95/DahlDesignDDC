@@ -3,77 +3,45 @@
   //--------------------------------------
 
   // TABLE INJECT
+  PCA9555Run(0x20, 22, 8);
 
-  // paddles (down - up)
-  switchTableInject(0, 1, 1); // 0
-  switchTableInject(18, 1, 2); // 1
-
-  // buttons (top-bottom)
-  switchTableInject(1, 1, 3); // 2
-  switchTableInject(2, 1, 4); // 3
-  switchTableInject(3, 1, 5); // 4
-  switchTableInject(4, 1, 6); // 5
-  switchTableInject(5, 1, 7); // 6
-
-  // buttons right (top-bottom)
-  switchTableInject(15, 1, 8);  // 7
-  switchTableInject(22, 1, 9);  // 8
-  switchTableInject(21, 1, 10); // 9 
-  switchTableInject(20, 1, 11); // 10
-  switchTableInject(19, 1, 12); // 11
-
-  // rotaries (left - right)
-  switchTableInject(6, 1, 13);
-  switchTableInject(7, 1, 14);
-  switchTableInject(8, 1, 15);
-  switchTableInject(9, 1, 16);
-  switchTableInject(10, 1, 17);
-  switchTableInject(11, 1, 18);
-  switchTableInject(12, 1, 19);
-  switchTableInject(13, 1, 20);
-
-  // xtra left-right
-  // switchTableInject(17, 1, 21); // 2
-  // switchTableInject(14, 1, 22); // 2
+  // paddles (left - right)
+  switchTableInject(14, 7, 1); // 0
+  switchTableInject(3, 7, 2);  // 1
 
   // ASSIGNMENT
 
   // 2 paddles
-  pushButton(1, 1);
-  pushButton(1, 2);
+  pushButton(7, 1);
+  pushButton(7, 2);
 
   // buttons left
+  pushButton(1, 1);
+  pushButton(1, 2);
   pushButton(1, 3);
-  pushButton(1, 4);
-  pushButton(1, 5);
-  pushButton(1, 6);
-  pushButton(1, 7);
+  pushButton(3, 5);
+  pushButton(4, 5);
 
   // buttons right
-  pushButton(1, 8);
-  pushButton(1, 9);
-  pushButton(1, 10);
-  pushButton(1, 11);
-  pushButton(1, 12);
+  pushButton(2, 1);
+  pushButton(2, 2);
+  pushButton(2, 3);
+  pushButton(5, 5);
+  pushButton(6, 5);
 
-  // rotaries
-  // E18Inc(1, 13, false);
-  E18Inc(1, 15, false);
-  E18Inc(1, 17, false);
-  E18Inc(1, 19, false);
+  // side rotaries
+  PEC11(1, 4, false);
+  PEC11(2, 4, false);
 
-  // xtra left-right
-  // pushButton(1, 21);
-  // pushButton(1, 22);
+  // ab encoders
+  rotary4Modes(3, 1, 2, 1, true);
 
-  // grayhill
-  rotaryAnalog2Mode(1, 1, 100, 2950, 5570, 8200, 10800, 13410, 16180, 19140, 22200, 25540, 28980, 32655, false);
-  // setAnalogSwitchMode(1, 1, 1); // change rotary to incremental mode
+  rotary4Modes(8, 1, 2, 1, true);
+  rotary4Modes(8, 5, 2, 1, true);
+  rotary4ModesReverse(9, 5, 2, 1, true);
 
   // clutch (channel 3: ADC2, channel 2: ADC1)
-  dualClutch(2, 9000, 5600, 3, 11000, 8600, false);
-  // checkValue(1);
-  // checkValue(3);
+  dualClutch(3, 11600, 10000, 2, 17600, 20500,  false);
 
   // top left and top right white buttons, 8 seconds
   // firmwareUploadMode(1, 3, 1, 8, 8000);
