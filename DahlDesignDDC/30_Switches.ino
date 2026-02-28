@@ -2,54 +2,87 @@
   //---------SWITCHES START HERE----------
   //--------------------------------------
 
-  // paddles (2)
-  pushButton(3, 1);
-  pushButton(3, 2);
+  PCA9555Run(0x20, 36, 5);
 
-  // buttons left (6)
+  // paddles
+  switchTableInject(39, 1, 1);
+  switchTableInject(38, 1, 2);
+
   pushButton(1, 1);
   pushButton(1, 2);
+
+  // buttons left (6)
+  switchTableInject(23, 1, 3);
+  switchTableInject(21, 1, 4);
+  switchTableInject(13, 1, 5);
+  switchTableInject(8, 1, 6);
+  switchTableInject(22, 1, 7);
+  switchTableInject(24, 1, 8);
+
   pushButton(1, 3);
   pushButton(1, 4);
   pushButton(1, 5);
   pushButton(1, 6);
+  pushButton(1, 7);
+  pushButton(1, 8);
 
   // buttons right (6)
-  pushButton(6, 1);
-  pushButton(6, 2);
-  pushButton(6, 3);
-  pushButton(6, 4);
-  pushButton(6, 5);
-  pushButton(6, 6);
+  switchTableInject(35, 2, 1);
+  switchTableInject(37, 2, 2);
+  switchTableInject(29, 2, 3);
+  switchTableInject(26, 2, 4);
+  switchTableInject(32, 2, 5);
+  switchTableInject(34, 2, 6);
+
+  pushButton(2, 1);
+  pushButton(2, 2);
+  pushButton(2, 3);
+  pushButton(2, 4);
+  pushButton(2, 5);
+  pushButton(2, 6);
 
   // buttons MOM OFF MOM (4)
-  toggleP(3, 3);
-  toggleP(3, 4);
-  toggleP(3, 5);
-  toggleP(3, 6);
+  switchTableInject(3, 2, 7);
+  switchTableInject(5, 2, 8);
+  switchTableInject(7, 3, 1);
+  switchTableInject(9, 3, 2);
 
-  // rotaries (9)
+  toggleP(2, 7);
+  toggleP(2, 8);
+  toggleP(3, 1);
+  toggleP(3, 2);
 
   // rotaries PEC11 (6)
+  switchTableInject(19, 3, 3);
+  switchTableInject(17, 3, 4);
+  switchTableInject(4, 3, 5);
+  switchTableInject(6, 3, 6);
+  switchTableInject(18, 3, 7);
+  switchTableInject(20, 3, 8);
+
+  switchTableInject(31, 4, 1);
+  switchTableInject(33, 4, 2);
+  switchTableInject(25, 4, 3);
+  switchTableInject(27, 4, 4);
+  switchTableInject(30, 4, 5);
+  switchTableInject(28, 4, 6);
+
+  PEC11(3, 3, false);
+  PEC11(3, 5, false);
+  PEC11(3, 7, false);
   PEC11(4, 1, false);
   PEC11(4, 3, false);
   PEC11(4, 5, false);
-  PEC11(5, 1, false);
-  PEC11(5, 3, false);
-  PEC11(5, 5, false);
 
-  // rotaries bottom (3)
-  E18Inc(2, 1, false);
-  E18Inc(2, 3, false);
-  E18Inc(2, 5, false);
-
-  // grayhill
-  // rotaryAnalog2Mode(1, 1, 780, 870, 930, 1010, 1095, 1195, 1320, 1510, 1790, 2230, 3100, 5460, false);
-  // setAnalogSwitchMode(1, 1, 1); // change rotary to incremental mode
+  // ab encoders
+  rotary4Modes(5, 1, 2, 1, true);
+  rotary4Modes(5, 5, 2, 1, true);
+  rotary4Modes(6, 1, 2, 1, true);
+  rotary4Modes(6, 5, 2, 1, true);
 
   // clutches
-  dualClutch(2, 10000, 7400, 3, 10500, 8500, true);
-  // checkValue(1);
+  dualClutch(1, 220, 175, 2, 240, 195, true);
+  // checkValue(2);
 
   // top left and top right green buttons, 8 seconds
   // firmwareUploadMode(1, 3, 1, 9, 8000);
