@@ -32,7 +32,7 @@
 //---RP2040 ADC OVERSAMPLING----
 //------------------------------
 
-#define ENABLE_OVERSAMPLING 1
+#define ENABLE_OVERSAMPLING 0
 
 //------------------------------
 //-----------MOUSE--------------

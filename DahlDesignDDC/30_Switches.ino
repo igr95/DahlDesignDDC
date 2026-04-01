@@ -71,7 +71,7 @@
   PEC11(2, 5, false);
 
   // // clutch (channel 3: ADC2, channel 2: ADC1)
-  dualClutch(1, 7750, 6300, 2, 10800, 12100, false);
+  dualClutch(1, 240, 200, 2, 345, 385, false);
     
   // top left and top right buttons, 8 seconds
   // firmwareUploadMode(1, 3, 1, 8, 8000);
