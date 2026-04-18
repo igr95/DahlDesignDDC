@@ -4,10 +4,10 @@
 //------------TABLE VARIABLES-------------
 //-----------------------------------------
 
-uint8_t row[] = { 15, 0, 9, 8, 7, 6, 99, 99, 99 };
+uint8_t row[] = { 99, 99, 99, 99 };
 const uint8_t rowCount = sizeof(row) / sizeof(row[0]);
 
-uint8_t col[] = { 19, 18, 17, 5, 4, 99 ,99 ,99 };
+uint8_t col[] = { 99, 99, 99, 99, 99, 99, 99, 99 };
 const uint8_t colCount = sizeof(col) / sizeof(col[0]);
 
 //---------------------------------------
@@ -16,15 +16,10 @@ const uint8_t colCount = sizeof(col) / sizeof(col[0]);
 
 uint8_t buttonNumber[rowCount][colCount] =
 {
-  { 2, 3, 4, 12, 13,0,0 }, // ROW 1
-  { 7, 8, 9, 14, 15,0,0 }, // ROW 2
-  { 16, 0, 0, 0, 5, 0,0 }, // ROW 4
-  { 28, 0, 0, 0, 6, 0,0 }, // ROW 5
-  { 40, 0, 0, 0, 10,0,0 }, // ROW 5
-  { 52, 0, 0, 0, 11,0,0 }, // ROW 6
-  { 0, 1, 0, 0, 0,0, 0,0    },  // DIRECT PINS
-  { 28, 0, 0, 0, 40,0, 0,0    },  // PORT EXPANDER
-  { 0, 1, 0, 0, 52,0, 0,0    },  // PORT EXPANDER
+  { 0, 1, 2, 3, 4, 5, 6, 7 }, // ROW 1
+  { 8, 9, 10, 11, 12, 13, 14, 15 }, // ROW 2
+  { 16, 0, 0, 0, 28, 0, 0, 0 },  // PORT EXPANDER
+  { 40, 0, 0, 0, 52, 0, 0, 0 },  // PORT EXPANDER
 };
 
 //---------------------------------------
@@ -32,7 +27,13 @@ uint8_t buttonNumber[rowCount][colCount] =
 //---------------------------------------
 
 
-uint8_t directPins[] = { 3, 14 };
+uint8_t directPins[] = { 
+  21, 20, 19, 18, 17, // left
+  0, 1, 2, 3, 4, // right
+  13, 5, // paddles
+  14, 15, // rot l
+  6, 7, // rot r 
+};
 const uint8_t directPinsCount = sizeof(directPins) / sizeof(directPins[0]);
 
 
