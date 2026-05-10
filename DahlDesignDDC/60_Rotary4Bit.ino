@@ -11,7 +11,7 @@ void rotary4Modes(int row, int column, int fieldPlacement, int hybridPositions, 
     int HyPos = hybridPositions;
     int Reverse = reverse;
 
-    int maxPos = max(16, HyPos);
+    int maxPos = max(12, HyPos);
 
     //Find switch absolute position
 
@@ -37,6 +37,11 @@ void rotary4Modes(int row, int column, int fieldPlacement, int hybridPositions, 
     pos = pos ^ (pos >> 1);
 
     int result = pos;
+        
+    if (result > 9)
+    {
+        result -= 4;
+    }
 
     //Short debouncer on switch rotation
 

@@ -151,7 +151,7 @@ uint8_t ADS1115_alertPins [] = {99};
 #endif
 
 //EEPROM CAT24C512
-#define USING_CAT24C512 0
+#define USING_CAT24C512 1
 #define CAT24C512_I2C_NUMBER 0
 #define CAT24C512_ADDRESS 0x50
 

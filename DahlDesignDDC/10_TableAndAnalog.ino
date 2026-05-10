@@ -4,10 +4,10 @@
 //------------TABLE VARIABLES-------------
 //-----------------------------------------
 
-uint8_t row[] = { 99 };
+uint8_t row[] = { 99, 99, 99 };
 const uint8_t rowCount = sizeof(row) / sizeof(row[0]);
 
-uint8_t col[] = { 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99 };
+uint8_t col[] = { 99, 99, 99, 99, 99, 99, 99, 99 };
 const uint8_t colCount = sizeof(col) / sizeof(col[0]);
 
 //---------------------------------------
@@ -16,7 +16,10 @@ const uint8_t colCount = sizeof(col) / sizeof(col[0]);
 
 uint8_t buttonNumber[rowCount][colCount] =
 {
-  { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 }
+  { 0, 1, 2, 3, 4, 5, 6, 7, },
+  { 8, 9, 10, 11, 12, 0, 0, 0, },
+  { 24, 0, 0, 0, 0, 0, 0, 0, }
+  
 };
 
 //---------------------------------------
@@ -25,10 +28,11 @@ uint8_t buttonNumber[rowCount][colCount] =
 
 
 uint8_t directPins[] = { 
-  0, 1, 2, 3, 4,      // buttons left
-  11, 12, 13, 14, 15, // buttons right
-  6, 9,               // paddles
-  18, 19, 20, 21      // rotaries
+  10, 11, 12, 13, 14, // buttons left
+  8, 7, 6, 5, 4,      // buttons right
+  15, 3,              // paddles
+  19, 16, 18, 17,     // ab encoder left
+  2, 20, 22, 21,      // ab encoder right
 };
 const uint8_t directPinsCount = sizeof(directPins) / sizeof(directPins[0]);
 
