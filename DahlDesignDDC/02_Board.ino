@@ -110,8 +110,8 @@
 //---------I2C DEVICES----------
 //------------------------------
 
-#define SDA0PIN 20
-#define SCL0PIN 21
+#define SDA0PIN 8
+#define SCL0PIN 9
 #define SDA1PIN 10
 #define SCL1PIN 11
 
@@ -151,7 +151,7 @@ uint8_t ADS1115_alertPins [] = {99};
 #endif
 
 //EEPROM CAT24C512
-#define USING_CAT24C512 0
+#define USING_CAT24C512 1
 #define CAT24C512_I2C_NUMBER 0
 #define CAT24C512_ADDRESS 0x50
 

@@ -38,7 +38,7 @@
   pushButton(1, 4);
   pushButton(1, 5);
   pushButton(1, 6);
-  pushButton(1, 7);
+  clutchCalibrate(1, 7);
 
   // buttons right
   pushButton(1, 8);
@@ -58,7 +58,7 @@
   rotary4Modes(4, 5, 2, 1, true);
 
   // clutch (channel 3: ADC2, channel 2: ADC1)
-  dualClutch(3, 11500, 10000, 2, 17600, 20500,  false);
+  dualClutchCal(3, 2, false);
 
   // top left and top right white buttons, 8 seconds
   // firmwareUploadMode(1, 3, 1, 8, 8000);
