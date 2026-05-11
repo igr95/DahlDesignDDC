@@ -24,7 +24,7 @@
   pushButton(1, 5);
   pushButton(1, 6);
   pushButton(1, 7);
-  pushButton(1, 8);
+  clutchCalibrate(1, 8);
 
   // buttons right (6)
   switchTableInject(35, 2, 1);
@@ -81,7 +81,7 @@
   rotary4Modes(6, 5, 2, 1, true);
 
   // clutches
-  dualClutch(1, 220, 175, 2, 240, 195, true);
+  dualClutchCal(1, 2, false);
   // checkValue(2);
 
   // top left and top right green buttons, 8 seconds
