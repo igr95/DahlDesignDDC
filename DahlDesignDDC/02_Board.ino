@@ -112,7 +112,7 @@
 
 #define SDA0PIN 0
 #define SCL0PIN 1
-#define SDA1PIN 2
+#define SDA1PIN 18
 #define SCL1PIN 3
 
 //PORT EXPANDER PCA9555
@@ -151,8 +151,8 @@ uint8_t ADS1115_alertPins [] = {99};
 #endif
 
 //EEPROM CAT24C512
-#define USING_CAT24C512 0
-#define CAT24C512_I2C_NUMBER 0
+#define USING_CAT24C512 1
+#define CAT24C512_I2C_NUMBER 1
 #define CAT24C512_ADDRESS 0x50
 
 //VARIABLES

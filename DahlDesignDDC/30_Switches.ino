@@ -53,7 +53,7 @@
   pushButton(1, 3);
   pushButton(1, 4);
   pushButton(1, 5);
-  pushButton(1, 6);
+  clutchCalibrate(1, 6);
 
   // 4 buttons right
   pushButton(1, 7);
@@ -70,8 +70,8 @@
   PEC11(2, 3, false);
   PEC11(2, 5, false);
 
-  // // clutch (channel 3: ADC2, channel 2: ADC1)
-  dualClutch(1, 240, 200, 2, 345, 385, false);
+  // clutch
+  dualClutchCal(1, 2, false);
     
   // top left and top right buttons, 8 seconds
   // firmwareUploadMode(1, 3, 1, 8, 8000);
