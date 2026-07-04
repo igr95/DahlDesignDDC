@@ -17,9 +17,9 @@ const uint8_t colCount = sizeof(col) / sizeof(col[0]);
 uint8_t buttonNumber[rowCount][colCount] =
 {
   { 0, 1, 2, 3, 4, 5, 6, 7, },
-  { 8, 9, 10, 11, 12, 13, 99, 99, },
-  { 14, 99, 99, 99, 99, 99, 99, 99, },
-  { 26, 99, 99, 99, 38, 99, 99, 99 },
+  { 8, 9, 10, 11, 12, 13, 14, 15, },
+  { 16, 17, 18, 99, 19, 99, 99, 99, },
+  { 31, 99, 99, 99, 43, 99, 99, 99 },
 };
 
 //---------------------------------------
@@ -28,10 +28,13 @@ uint8_t buttonNumber[rowCount][colCount] =
 
 
 uint8_t directPins[] = { 
-  19, 30, 0, 2, 4, 6, 14, 12, // Shifters + BT1-6
-  10, 8, 21, 22, 39, 33, 37, 35, // BT7-8 + ROT L + AB ENC TOP
-  11, 17, 13, 15, 32, 38, 34, 36, // BT6-8 + AB ENC BOTTOM L-R
-  26, 28 // ROT R
+  15, 30, 0, 2, 4, 6, 8, 22, // Shifters + BT1-6 (8)
+  20, 16, 14, 12, 10, 19, 21, 23, // BT7-11 + ROT L (8)
+  28, 26, 25, // ROT R + (3)
+  // 13, 9, // EXTRA L (2)
+  // 31, 27, 29, // EXTRA R (3)
+  39, 33, 37, 35, // EXTRA R + AB ENC TOP (7)
+  1, 7, 3, 5, 32, 38, 34, 36,  // AB ENC BOTTOM L-R (8)
 };
 const uint8_t directPinsCount = sizeof(directPins) / sizeof(directPins[0]);
 

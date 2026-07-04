@@ -113,7 +113,7 @@
 #define SDA0PIN 0
 #define SCL0PIN 1
 #define SDA1PIN 18
-#define SCL1PIN 3
+#define SCL1PIN 11
 
 //PORT EXPANDER PCA9555
 #define USING_PCA9555 0

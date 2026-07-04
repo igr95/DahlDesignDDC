@@ -4,7 +4,7 @@
 
   // TABLE INJECT
   // paddles (down - up)
-  switchTableInject(19, 1, 1);
+  switchTableInject(15, 1, 1);
   switchTableInject(30, 1, 2);
 
   // buttons (top-bottom)
@@ -12,30 +12,35 @@
   switchTableInject(2, 1, 4);
   switchTableInject(4, 1, 5);
   switchTableInject(6, 1, 6);
+  switchTableInject(8, 1, 7);
+  switchTableInject(22, 1, 8);
   
   // buttons right (top-bottom)
-  switchTableInject(14, 1, 7);
-  switchTableInject(12, 1, 8);
-  switchTableInject(10, 2, 1);
-  switchTableInject(8, 2, 2);
+  switchTableInject(20, 2, 1);
+  switchTableInject(16, 2, 2);
+  switchTableInject(14, 2, 3);
+  switchTableInject(12, 2, 4);
+  switchTableInject(10, 2, 5);
 
   // ROT L + ROT R
-  switchTableInject(21, 2, 3);
-  switchTableInject(22, 2, 4);
-  switchTableInject(26, 2, 5);
-  switchTableInject(28, 2, 6);
+  switchTableInject(19, 2, 6);
+  switchTableInject(21, 2, 7);
+  switchTableInject(23, 2, 8);
+  switchTableInject(28, 3, 1);
+  switchTableInject(25, 3, 2);
+  switchTableInject(26, 3, 3);
 
   // abs enc top
-  switchTableInject(39, 3, 1);
-  switchTableInject(33, 3, 2);
-  switchTableInject(37, 3, 3);
-  switchTableInject(35, 3, 4);
+  switchTableInject(39, 3, 5);
+  switchTableInject(33, 3, 6);
+  switchTableInject(37, 3, 7);
+  switchTableInject(35, 3, 8);
 
   // abs enc left
-  switchTableInject(11, 4, 1);
-  switchTableInject(17, 4, 2);
-  switchTableInject(13, 4, 3);
-  switchTableInject(15, 4, 4);
+  switchTableInject(1, 4, 1);
+  switchTableInject(7, 4, 2);
+  switchTableInject(3, 4, 3);
+  switchTableInject(5, 4, 4);
 
   // abs enc right
   switchTableInject(32, 4, 5);
@@ -49,26 +54,33 @@
   pushButton(1, 1);
   pushButton(1, 2);
 
-  // 4 buttons left
+  // 5 buttons left
   pushButton(1, 3);
   pushButton(1, 4);
   pushButton(1, 5);
-  clutchCalibrate(1, 6);
+  pushButton(1, 6);
+  clutchCalibrate(1, 7);
 
-  // 4 buttons right
-  pushButton(1, 7);
+  // button center
   pushButton(1, 8);
+
+  // 5 buttons right
   pushButton(2, 1);
   pushButton(2, 2);
-
-  // rotaries
-  rotary4Modes(3, 1, 2, 1, true);
-  rotary4Modes(4, 1, 2, 1, true);
-  rotary4Modes(4, 5, 2, 1, true);
+  pushButton(2, 3);
+  pushButton(2, 4);
+  pushButton(2, 5);
 
   // ROT L + ROT R
-  PEC11(2, 3, false);
-  PEC11(2, 5, false);
+  PEC11(2, 6, false);
+  pushButton(2, 8);
+  PEC11(3, 1, false);
+  pushButton(3, 3);
+
+  // rotaries
+  rotary4Modes(3, 5, 2, 1, true);
+  rotary4Modes(4, 1, 2, 1, true);
+  rotary4Modes(4, 5, 2, 1, true);
 
   // clutch
   dualClutchCal(1, 2, false);
