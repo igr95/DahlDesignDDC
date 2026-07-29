@@ -32,7 +32,7 @@
 //---RP2040 ADC OVERSAMPLING----
 //------------------------------
 
-#define ENABLE_OVERSAMPLING 0
+#define ENABLE_OVERSAMPLING 1
 
 //------------------------------
 //-----------MOUSE--------------
@@ -48,6 +48,8 @@
 //Enable board
 #define USING_CB1 0
 #define USING_CB2 0
+
+
 
 //------------------------------
 //---------CB1 SETTINGS---------
@@ -161,8 +163,12 @@ bool wire0Init = false;
 
 
 #if(USING_CB1 == 1 || ENABLE_OVERSAMPLING == 1)
-  #include <ADCInput.h>
-  ADCInput oversamples (A0, A1, A2, A3);
+  #include <DDCADCInput.h>
+  #if defined(PICO_RP2350) && !PICO_RP2350A && (USING_CB1 == 0)
+    DDCADCInput oversamples (40, 41, 42, 43, 44, 45, 46, 47);
+  #else
+    DDCADCInput oversamples (26, 27, 28, 29);
+  #endif
 #endif
 
 #if(USING_CB1 == 1)
@@ -171,7 +177,7 @@ bool wire0Init = false;
   uint8_t ADS1115channelCounter[2] = {0,0};  
 #elif(ADS1115_CHIPS > 0 && ENABLE_OVERSAMPLING == 1)
   bool ADS1115sentReq[ADS1115_CHIPS];
-  uint16_t ADS1115value[4*(ADS1115_CHIPS+1) + LOADCELL_ENABLED];
+  uint16_t ADS1115value[8*(ADS1115_CHIPS+1) + LOADCELL_ENABLED];
   uint8_t ADS1115channelCounter[ADS1115_CHIPS];
 #elif(ADS1115_CHIPS > 0)
   bool ADS1115sentReq[ADS1115_CHIPS];

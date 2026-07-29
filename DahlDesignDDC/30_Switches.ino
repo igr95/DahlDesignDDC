@@ -27,8 +27,8 @@
   switchTableInject(21, 2, 7);
   switchTableInject(23, 2, 8);
   switchTableInject(28, 3, 1);
-  switchTableInject(25, 3, 2);
-  switchTableInject(26, 3, 3);
+  switchTableInject(26, 3, 2);
+  switchTableInject(25, 3, 3);
 
   // abs enc top
   switchTableInject(39, 3, 5);
@@ -47,6 +47,10 @@
   switchTableInject(38, 4, 6);
   switchTableInject(34, 4, 7);
   switchTableInject(36, 4, 8);
+
+  // XTRA L + R
+  switchTableInject(13, 5, 1);
+  switchTableInject(31, 5, 2);
 
   // ASSIGNMENT
 
@@ -81,6 +85,10 @@
   rotary4Modes(3, 5, 2, 1, true);
   rotary4Modes(4, 1, 2, 1, true);
   rotary4Modes(4, 5, 2, 1, true);
+
+  // XTRA L + R
+  pushButton(5, 1);
+  pushButton(5, 2);
 
   // clutch
   dualClutchCal(1, 2, false);
