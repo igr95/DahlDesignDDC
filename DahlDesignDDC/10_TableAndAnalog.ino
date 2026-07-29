@@ -57,7 +57,7 @@ const uint8_t outputPinsCount = sizeof(outputPins) / sizeof(outputPins[0]);
 #define analogChannelCount 8                             //Number of analog channels
 
 uint8_t analogPins[analogChannelCount] =                 //Pin number for your analog channels
-{ A0, A1, A2, A3, A4, A5, A6, A7 };
+{ ADC1, ADC2, ADC3, ADC4, ADC5, ADC6, ADC7, ADC8 };
 
 uint8_t analogButtonNumber[analogChannelCount] =         //Button number for your analog channels
 { 0, 0, 0, 0, 0, 0, 0, 0 };
